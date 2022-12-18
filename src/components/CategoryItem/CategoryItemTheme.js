@@ -1,5 +1,6 @@
 export const theme = {
     itemWrapper: {
+        justifyContent: "center",
         cursor: "pointer",
         transition: "0.5s",
         "&:hover": {

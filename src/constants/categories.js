@@ -1,5 +1,5 @@
-import videoIntercomsImg from "../assets/img/categories/video_intercoms.webp";
-import outdoorPanelsImg from "../assets/img/categories/outdoor_panels.webp";
+import videoIntercomsImg from "../assets/img/categories/video_intercoms.jpg";
+import outdoorPanelsImg from "../assets/img/categories/outdoor_panels.jpg";
 
 export const categories = [
     {
