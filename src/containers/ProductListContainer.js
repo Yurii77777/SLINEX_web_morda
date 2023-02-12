@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 
-// import PT from 'prop-types';
-import { Box, Grid, Paper } from "@mui/material/";
-import { styled } from "@mui/material/styles";
+import { Box, Grid } from "@mui/material/";
 import { useLocation } from "react-router-dom";
 
 import { LoaderComponent } from "../components/UIelements/LoaderComponent/LoaderComponent";
+import { PreviewproductItem } from "../components/PreviewproductItem/PreviewproductItem";
 
 import { useFetch } from "../hooks/useFetch";
 
@@ -13,15 +12,7 @@ import { prepareDataForRender } from "../utils/prepareDataForRender";
 
 import { API } from "../constants/API";
 
-// import { theme } from './ProductListContainerTheme';
-
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-}));
+import { theme } from "./ProductListContainerTheme";
 
 export const ProductListContainer = () => {
     const [category, setCategory] = useState(null);
@@ -74,25 +65,20 @@ export const ProductListContainer = () => {
 
             {!isLoading && isProducts && (
                 <Grid container spacing={2}>
-                    {products.map(({ productName, primeImg }) => {
-                        return (
-                            <Grid item xs={6} md={3}>
-                                <Item>
-                                    <Box
-                                        component="img"
-                                        alt="productName"
-                                        src={primeImg}
-                                    />
-                                </Item>
-                            </Grid>
-                        );
-                    })}
+                    {products.map(
+                        ({ productName, primeImg, stock, rrp_UAH }) => {
+                            return (
+                                <PreviewproductItem
+                                    productName={productName}
+                                    primeImg={primeImg}
+                                    stock={stock}
+                                    rrp_UAH={rrp_UAH}
+                                />
+                            );
+                        }
+                    )}
                 </Grid>
             )}
         </Box>
     );
 };
-
-// ProductListContainer.propTypes = {
-
-// };
