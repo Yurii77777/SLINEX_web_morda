@@ -18,7 +18,7 @@ export const PreviewproductItem = ({
     stock,
     rrp_UAH,
 }) => {
-    const isInStock = stock !== 0 || stock !== "";
+    const isInStock = stock !== "0" || stock !== "";
 
     return (
         <Grid item xs={6} md={3}>
