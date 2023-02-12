@@ -2,9 +2,9 @@ import { useEffect } from "react";
 
 import { Route, Routes } from "react-router-dom";
 import { Box } from "@mui/material/";
-import { Close } from "@mui/icons-material/";
 
 import { MainPage } from "../../pages/MainPage/MainPage";
+import { ProductListContainer } from "../../containers/ProductListContainer";
 
 import { theme } from "./AppTheme";
 
@@ -15,16 +15,18 @@ export const App = () => {
         tg.ready();
     }, [tg]);
 
-    const onClose = () => {
-        tg.close();
-    };
-
     return (
         <Box sx={theme.wrapper}>
-            <Close sx={theme.closeBtn} onClick={onClose} />
-
             <Routes>
                 <Route path="/" element={<MainPage />}></Route>
+                <Route
+                    path="/videoIntercoms"
+                    element={<ProductListContainer />}
+                ></Route>
+                <Route
+                    path="/outdoorPanels"
+                    element={<ProductListContainer />}
+                ></Route>
             </Routes>
         </Box>
     );
