@@ -66,12 +66,13 @@ export const ProductListContainer = () => {
             {!isLoading && isProducts && (
                 <Grid container spacing={2}>
                     {products.map(
-                        ({ productName, primeImg, stock, rrp_UAH }) => {
+                        ({ id, productName, primeImg, stock, rrp_UAH }) => {
                             return (
                                 <PreviewproductItem
+                                    key={id}
                                     productName={productName}
                                     primeImg={primeImg}
-                                    stock={stock}
+                                    stock={String(stock)}
                                     rrp_UAH={rrp_UAH}
                                 />
                             );

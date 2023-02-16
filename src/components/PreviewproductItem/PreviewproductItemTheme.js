@@ -25,4 +25,9 @@ export const theme = {
     priceParagraph: {
         fontSize: "calc(1.2rem + 10 * (100vw / 1280))",
     },
+    btnsContainer: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+    },
 };
