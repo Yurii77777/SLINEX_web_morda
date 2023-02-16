@@ -3,8 +3,9 @@ import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Box } from "@mui/material/";
 
+import { HeaderContainer } from "../../containers/HeaderContainer/HeaderContainer";
 import { MainPage } from "../../pages/MainPage/MainPage";
-import { ProductListContainer } from "../../containers/ProductListContainer";
+import { ProductListContainer } from "../../containers/ProductListContainer/ProductListContainer";
 
 import { theme } from "./AppTheme";
 
@@ -17,6 +18,8 @@ export const App = () => {
 
     return (
         <Box sx={theme.wrapper}>
+            <HeaderContainer />
+
             <Routes>
                 <Route path="/" element={<MainPage />}></Route>
                 <Route

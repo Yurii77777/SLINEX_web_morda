@@ -3,14 +3,14 @@ import { useEffect, useState } from "react";
 import { Box, Grid } from "@mui/material/";
 import { useLocation } from "react-router-dom";
 
-import { LoaderComponent } from "../components/UIelements/LoaderComponent/LoaderComponent";
-import { PreviewproductItem } from "../components/PreviewproductItem/PreviewproductItem";
+import { LoaderComponent } from "../../components/UIelements/LoaderComponent/LoaderComponent";
+import { PreviewproductItem } from "../../components/PreviewproductItem/PreviewproductItem";
 
-import { useFetch } from "../hooks/useFetch";
+import { useFetch } from "../../hooks/useFetch";
 
-import { prepareDataForRender } from "../utils/prepareDataForRender";
+import { prepareDataForRender } from "../../utils/prepareDataForRender";
 
-import { API } from "../constants/API";
+import { API } from "../../constants/API";
 
 import { theme } from "./ProductListContainerTheme";
 
