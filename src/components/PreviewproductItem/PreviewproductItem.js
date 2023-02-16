@@ -1,6 +1,7 @@
 import { Box, Grid, Paper, Typography, IconButton } from "@mui/material/";
 import { styled } from "@mui/material/styles";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
+import { Link } from "react-router-dom";
 import PT from "prop-types";
 
 import { ButtonComponent } from "../UIelements/ButtonComponent/ButtonComponent";
@@ -15,11 +16,13 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
 }));
 
-export const PreviewproductItem = ({
+export const PreviewProductItem = ({
     productName,
     primeImg,
     stock,
     rrp_UAH,
+    id,
+    category,
 }) => {
     const isInStock = stock !== "0" ? true : false;
 
@@ -49,11 +52,13 @@ export const PreviewproductItem = ({
                 </Box>
 
                 <Box sx={theme.btnsContainer}>
-                    <ButtonComponent
-                        btnTitle={"Детально"}
-                        variant={"contained"}
-                        size={"small"}
-                    />
+                    <Link to={`/product/${id}`} state={{ id, category }}>
+                        <ButtonComponent
+                            btnTitle={"Детально"}
+                            variant={"contained"}
+                            size={"small"}
+                        />
+                    </Link>
 
                     <IconButton aria-label="Add to shopping cart" size="large">
                         <LocalMallIcon fontSize="inherit" />
@@ -64,9 +69,11 @@ export const PreviewproductItem = ({
     );
 };
 
-PreviewproductItem.propTypes = {
+PreviewProductItem.propTypes = {
+    id: PT.number.isRequired,
     productName: PT.string.isRequired,
     primeImg: PT.string.isRequired,
     stock: PT.string.isRequired,
     rrp_UAH: PT.number.isRequired,
+    category: PT.string.isRequired,
 };

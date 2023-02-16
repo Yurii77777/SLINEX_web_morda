@@ -4,7 +4,7 @@ import { Box, Grid } from "@mui/material/";
 import { useLocation } from "react-router-dom";
 
 import { LoaderComponent } from "../../components/UIelements/LoaderComponent/LoaderComponent";
-import { PreviewproductItem } from "../../components/PreviewproductItem/PreviewproductItem";
+import { PreviewProductItem } from "../../components/PreviewProductItem/PreviewproductItem";
 
 import { useFetch } from "../../hooks/useFetch";
 
@@ -12,7 +12,7 @@ import { prepareDataForRender } from "../../utils/prepareDataForRender";
 
 import { API } from "../../constants/API";
 
-import { theme } from "./ProductListContainerTheme";
+// import { theme } from "./ProductListContainerTheme";
 
 export const ProductListContainer = () => {
     const [category, setCategory] = useState(null);
@@ -68,12 +68,14 @@ export const ProductListContainer = () => {
                     {products.map(
                         ({ id, productName, primeImg, stock, rrp_UAH }) => {
                             return (
-                                <PreviewproductItem
+                                <PreviewProductItem
                                     key={id}
+                                    id={id}
                                     productName={productName}
                                     primeImg={primeImg}
                                     stock={String(stock)}
                                     rrp_UAH={rrp_UAH}
+                                    category={category}
                                 />
                             );
                         }
