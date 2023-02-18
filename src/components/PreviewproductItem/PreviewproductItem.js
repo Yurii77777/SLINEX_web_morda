@@ -4,6 +4,7 @@ import LocalMallIcon from "@mui/icons-material/LocalMall";
 import { Link } from "react-router-dom";
 import PT from "prop-types";
 
+import { ProductTitleComponent } from "../UIelements/ProductTitleComponent/ProductTitleComponent";
 import { ButtonComponent } from "../UIelements/ButtonComponent/ButtonComponent";
 
 import { theme } from "./PreviewproductItemTheme";
@@ -29,9 +30,10 @@ export const PreviewProductItem = ({
     return (
         <Grid item xs={6} md={3}>
             <Item sx={theme.contentContainer}>
-                <Typography variant="h2" sx={theme.title}>
-                    {productName}
-                </Typography>
+                <ProductTitleComponent
+                    productName={productName}
+                    variant={"h2"}
+                />
 
                 <Box component="img" alt="productName" src={primeImg} />
 

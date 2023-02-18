@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 
-import { Paper } from "@mui/material/";
+import { Paper, Box, Typography } from "@mui/material/";
 import { styled } from "@mui/material/styles";
 import { useLocation } from "react-router-dom";
 // import PT from 'prop-types';
 
 import { LoaderComponent } from "../../components/UIelements/LoaderComponent/LoaderComponent";
+import { ProductTitleComponent } from "../../components/UIelements/ProductTitleComponent/ProductTitleComponent";
+import { MUIcarouselComponent } from "../../components/MUIcarousel/MUIcarouselComponent";
 
 import { useFetch } from "../../hooks/useFetch";
 
@@ -13,21 +15,26 @@ import { prepareDataForRender } from "../../utils/prepareDataForRender";
 
 import { API } from "../../constants/API";
 
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-}));
+import { theme } from "./ProductDetailPageTheme";
+
+// const Item = styled(Paper)(({ theme }) => ({
+//     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+//     ...theme.typography.body2,
+//     padding: theme.spacing(1),
+//     textAlign: "center",
+//     color: theme.palette.text.secondary,
+// }));
 
 export const ProductDetailPage = () => {
     const [productId, setProductId] = useState(null);
     const [category, setCategory] = useState(null);
     const [productData, setProductData] = useState(null);
+    const [carouselData, setCarouselData] = useState(null);
 
     const location = useLocation();
     const { request, isLoading, error } = useFetch();
+
+    const productTitle = productData?.productName || "";
 
     useEffect(() => {
         if (location.state) {
@@ -51,7 +58,7 @@ export const ProductDetailPage = () => {
 
                 const preparedProductsData = prepareDataForRender(data || []);
                 setProductData(
-                    preparedProductsData.filter(({ id }) => id === productId)
+                    preparedProductsData.filter(({ id }) => id === productId)[0]
                 );
             } catch (error) {
                 // We already handle errors in useFetch hook
@@ -64,7 +71,34 @@ export const ProductDetailPage = () => {
         }
     }, [productId, category, request]);
 
-    return <Item>{isLoading && <LoaderComponent />}</Item>;
+    useEffect(() => {
+        if (productData) {
+            const { additionalImgs, productName } = productData;
+            const carouselData = additionalImgs.split(",").map((imageSrc) => {
+                return {
+                    imageSrc,
+                    productName,
+                };
+            });
+
+            setCarouselData(carouselData);
+        }
+    }, [productData]);
+
+    return (
+        <Box sx={theme.contentContainer}>
+            {isLoading && <LoaderComponent />}
+
+            {!isLoading && (
+                <ProductTitleComponent
+                    productName={productTitle}
+                    variant={"h1"}
+                />
+            )}
+
+            {carouselData && <MUIcarouselComponent items={carouselData} />}
+        </Box>
+    );
 };
 
 // ProductDetailPage.propTypes = {
