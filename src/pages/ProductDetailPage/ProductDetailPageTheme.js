@@ -21,4 +21,16 @@ export const theme = {
         whiteSpace: "break-spaces",
         textAlign: "start",
     },
+    getProductContainer: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        margin: "10px 0",
+    },
+    getProductParagraph: {
+        fontSize: "1.5rem",
+    },
+    shopIcon: {
+        fontSize: "2rem",
+    },
 };

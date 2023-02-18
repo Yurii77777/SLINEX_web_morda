@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
-import { Paper, Box, Typography, CardMedia } from "@mui/material/";
+import { Paper, Box, Typography, CardMedia, IconButton } from "@mui/material/";
+import LocalMallIcon from "@mui/icons-material/LocalMall";
 import { styled } from "@mui/material/styles";
 import { useLocation } from "react-router-dom";
-// import PT from 'prop-types';
 
 import { LoaderComponent } from "../../components/UIelements/LoaderComponent/LoaderComponent";
 import { ProductTitleComponent } from "../../components/UIelements/ProductTitleComponent/ProductTitleComponent";
@@ -123,12 +123,22 @@ export const ProductDetailPage = () => {
                             loading="lazy"
                         />
                     </Item>
+
+                    <Box sx={theme.getProductContainer}>
+                        <Typography sx={theme.getProductParagraph}>
+                            Беру! Додати в кошик ={">"}
+                        </Typography>
+
+                        <IconButton
+                            aria-label="Add to shopping cart"
+                            size="large"
+                            sx={theme.shopIcon}
+                        >
+                            <LocalMallIcon fontSize="inherit" />
+                        </IconButton>
+                    </Box>
                 </>
             )}
         </Box>
     );
 };
-
-// ProductDetailPage.propTypes = {
-
-// };
