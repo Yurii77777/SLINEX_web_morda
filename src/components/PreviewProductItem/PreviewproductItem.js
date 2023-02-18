@@ -1,4 +1,4 @@
-import { Box, Grid, Paper, Typography, IconButton } from "@mui/material/";
+import { Box, Grid, Paper, IconButton } from "@mui/material/";
 import { styled } from "@mui/material/styles";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 import { Link } from "react-router-dom";
@@ -6,6 +6,7 @@ import PT from "prop-types";
 
 import { ProductTitleComponent } from "../UIelements/ProductTitleComponent/ProductTitleComponent";
 import { ButtonComponent } from "../UIelements/ButtonComponent/ButtonComponent";
+import { PriceContainer } from "../../containers/PriceContainer/PriceContainer";
 
 import { theme } from "./PreviewproductItemTheme";
 
@@ -37,21 +38,7 @@ export const PreviewProductItem = ({
 
                 <Box component="img" alt="productName" src={primeImg} />
 
-                <Box sx={theme.descriptionContainer}>
-                    <Typography
-                        sx={
-                            isInStock
-                                ? theme.isInStockParagraph
-                                : theme.outOfStockParagraph
-                        }
-                    >
-                        {isInStock ? "В наявності" : "Очікуємо"}
-                    </Typography>
-
-                    <Typography sx={theme.priceParagraph}>
-                        {rrp_UAH} грн
-                    </Typography>
-                </Box>
+                <PriceContainer isInStock={isInStock} rrp_UAH={rrp_UAH} />
 
                 <Box sx={theme.btnsContainer}>
                     <Link to={`/product/${id}`} state={{ id, category }}>

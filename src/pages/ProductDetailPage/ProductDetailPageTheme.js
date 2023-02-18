@@ -12,4 +12,13 @@ export const theme = {
         fontWeight: 500,
         letterSpacing: "2px",
     },
+    shortDescription: {
+        fontWeight: 700,
+        marginBottom: "10px",
+        letterSpacing: "1px",
+    },
+    keyFeatures: {
+        whiteSpace: "break-spaces",
+        textAlign: "start",
+    },
 };
