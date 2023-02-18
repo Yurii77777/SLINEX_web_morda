@@ -10,6 +10,6 @@ export const MUIcarouselItem = ({ altText, imageSrc }) => {
 };
 
 MUIcarouselItem.propTypes = {
-    altText: PT.string.isRequired,
+    altText: PT.string,
     imageSrc: PT.string.isRequired,
 };
